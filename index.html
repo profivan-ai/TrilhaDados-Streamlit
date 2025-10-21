@@ -1,1 +1,193 @@
-index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aulas Streamlit</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #405601;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    nav {
+      width: auto;
+      background-color: #34495e;
+      color: white;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    nav h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-bottom: 0.5rem;
+}
+
+    nav ul li button {
+      width: 100%;
+      background: #2c3e50;
+      border: none;
+      color: white;
+      text-align: left;
+      font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    nav ul li button:hover {
+      background-color: #1abc9c;
+    }
+
+    nav ul li button.active {
+      background-color: #16a085;
+    }
+
+    .content {
+      flex: 1;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .video-frame {
+      width: 100%;
+      max-width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .exercise-box {
+      background-color: #ecf0f1;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #3498db;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        width: 100%;
+      }
+
+      .content {
+        width: 100%;
+      }
+
+      .video-frame {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Aulas Streamlit
+  </header>
+
+  <main>
+    <nav>
+      <h2>Vídeos da Playlist</h2>
+      <ul>
+
+        <li><button onclick="loadVideo('TnzXwysxZ2U', event, `
+          <strong>Projeto Clinicas - Aula 1</strong><br>
+           📂 <a href=''> </a><br>`)">
+		 Aula 1.
+		</button></li>
+        
+        <li><button onclick="loadVideo('W4M9HEXhg9Y', event, `
+          <strong>Projeto Clinicas - Aula 2</strong><br>
+           📂 <a href=''> </a><br>`)">
+		 Aula 2.
+		</button></li>
+
+        <li><button onclick="loadVideo('W6AV-1x7xAM', event, `
+          <strong>Projeto Clinicas - Aula 3</strong><br>
+           📂 <a href=''> </a><br>`)">
+		 Aula 3.
+		</button></li>
+		  
+        <li><button onclick="loadVideo('fLM0RFARYtQ', event, `
+          <strong>Projeto Clinicas - Aula 4</strong><br>
+           📂 <a href=''> </a><br>`)">
+		 Aula 4.
+		</button></li>
+        
+
+
+        <li><button onclick="loadVideo('_yJfSSQCKQc', event, `
+          <strong>Projeto Clinicas - Proposta de Exercicio</strong><br>
+           📂 <a href=''> </a><br>`)">
+		 Para ajudar na fixacao do conteudo, tente resolver essa atividade.
+		</button></li>
+
+        
+
+
+		  
+      </ul>
+    </nav>
+
+    <div class="content">
+      <iframe id="videoFrame" class="video-frame" src="https://www.youtube.com/embed/TnzXwysxZ2U" allowfullscreen></iframe>
+
+      <div class="exercise-box" id="exerciseBox">
+        <h3>Exercícios / Materiais de apoio a aula</h3>
+        <p>Selecione uma aula para carregar...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function loadVideo(videoId, event, exerciseContent) {
+      const iframe = document.getElementById('videoFrame');
+      iframe.src = 'https://www.youtube.com/embed/' + videoId;
+
+      // Remove classe ativa de todos os botões
+      document.querySelectorAll('nav ul li button').forEach(btn => btn.classList.remove('active'));
+
+      // Adiciona classe ativa ao botão clicado
+      event.target.classList.add('active');
+
+      // Atualiza a caixa de exercícios
+      const exerciseBox = document.getElementById('exerciseBox');
+      exerciseBox.innerHTML = `
+        <h3>Exercícios sugeridos</h3>
+        <p>${exerciseContent}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
+	
